@@ -1,5 +1,5 @@
 FROM ubuntu
-MAINTAINER Rodney Persky "rodney.persky@gmail.com"
+MAINTAINER Rodney Persky <rodney.persky@gmail.com>
 
 
 
@@ -24,16 +24,17 @@ RUN  mkdir /usr/share/scm-manager && \
      tar -xzf $(ls | grep ".gz") && \
      rm $(ls | grep ".gz")
 
-# Note I suggest to use /CoreRepository as the location where the repository files can be kept
-# as then you can use -b /home/repos:/CoreRepository to bind the two filesystems together
-#                            |             |
-#                            |         SCM server
+# Note I suggest to use /datay as the location where the repository files can be kept
+# as then you can use -b /home/repos:/data to bind the two filesystems together
+#                            |          |
+#                            |      SCM server
 #                       On your computer
 
 # It is then easy to progress and import your own repositories following the scm layout of
-# REPO/hg    <- storage of mercurial repositories
+# data/hg    <- storage of mercurial repositories
 #      git   <- storage of git repositories
 #      svn   <- storage of subversion repositories
 
 EXPOSE 8080
-CMD ["/usr/share/scm-manager", "./scm-server/bin/scm-server"]
+CMD ["/usr/share/scm-manager/scm-server/bin/scm-server"]
+VOLUME ["/data"]
