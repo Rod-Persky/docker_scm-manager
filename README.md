@@ -22,7 +22,7 @@ f08460ebd8cc        rodpersky/docker-scm-manager:1.522   ./scm-server/bin/scm-se
 ```
 
 Or something like that, the imporant bit is the image tagged `rodpersky/docker-scm-manager` is indeed
-there. So now your scm-manager instance is available by going to `http://localhost:8080` if not just check
+there. So now your scm-manager instance is available by going to `http://localhost:80` if not just check
 that you ran docker using the invocation above.
 
 ## Building
