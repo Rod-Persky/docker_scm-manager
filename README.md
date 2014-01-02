@@ -1,4 +1,4 @@
-# docker-scm-manager
+# Docker: scm-manager
 
 Sets up a container with scm-manager installed listening on port 8080.
 
@@ -7,7 +7,7 @@ Sets up a container with scm-manager installed listening on port 8080.
 To run the container, do the following:
 
 ``` bash
-docker run -d Rod-Persky/docker-scm-manager
+docker run -d Rod-Persky/scm-manager
 ```
 
 This should download the image which has been uploaded to the docker index (pretty big?),
@@ -22,14 +22,14 @@ ago      Up 20 minutes       49153->8080
 ```
 
 Or something like that, the imporant bit is the image tagged `Rod-Persky/scm-manager` is indeed
-there. So now your scm-manager instance is available by going to http://localhost:8080 if not
+there. So now your scm-manager instance is available by going to `http://localhost:8080` if not
 you can add `docker run -p 127.0.0.1:80:8080 Rod-Persky/scm-manager` which should do the trick.
 
 ## Building
 To build the image, instead of downloading it (which tends to be a bit large) simply invoke
 
 ``` bash
-docker build github.com/aespinosa/docker-jenkins
+docker build github.com/Rod-Persky/docker_scm-manager
 ```
 
 Although the caviat in this case is that it's a prebuilt binary, so really it should be as large
