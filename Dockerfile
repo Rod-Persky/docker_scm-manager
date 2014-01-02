@@ -21,7 +21,8 @@ RUN apt-get install -y wget openjdk-7-jre-headless mercurial git subversion pyth
 RUN  mkdir /usr/share/scm-manager && \
      cd /usr/share/scm-manager && \
      wget https://repository-scm-manager.forge.cloudbees.com/snapshot/sonia/scm/scm-server/1.36-SNAPSHOT/scm-server-1.36-20131230.140542-1-app.tar.gz && \
-     tar -xzf $(ls | grep ".gz")
+     tar -xzf $(ls | grep ".gz") && \
+     rm $(ls | grep ".gz")
 
 # Note I suggest to use /CoreRepository as the location where the repository files can be kept
 # as then you can use -b /home/repos:/CoreRepository to bind the two filesystems together
