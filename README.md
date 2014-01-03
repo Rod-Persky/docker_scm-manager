@@ -7,11 +7,14 @@ Sets up a container with scm-manager installed listening on port 8080.
 To run the container, do the following:
 
 ``` bash
-docker run -d -p 127.0.0.1:80:8080 rodpersky/docker-scm-manager
+docker run -d -v /home/repos:/root/.scm:rw -p 127.0.0.1:80:8080 rodpersky/docker-scm-manager
 ```
 
 This should download the image which has been uploaded to the docker index (pretty big?),
-once it is running you can check the process is up via:
+and run it where its then accessable from `127.0.0.1` (localhost) and files are stored
+in /home/repos. The /home/repos should be replaced with a folder that exists and which
+you want the repositiories to be kept in. _If you want the server to be globally accessible
+then replace 127.0.0.1 with 0.0.0.0_. Once it is running you can check the process is up via:
 
 
 ``` bash

@@ -1,4 +1,4 @@
-FROM ubuntu
+FROM ubuntu quantal
 MAINTAINER Rodney Persky <rodney.persky@gmail.com>
 
 
@@ -25,16 +25,16 @@ RUN  mkdir /usr/share/scm-manager && \
      rm $(ls | grep ".gz")
 
 # Note I suggest to use /datay as the location where the repository files can be kept
-# as then you can use -b /home/repos:/data to bind the two filesystems together
-#                            |          |
-#                            |      SCM server
-#                       On your computer
+# as then you can use -v /home/repos:/root/.scm:rw to bind the two filesystems together
+#                            |            |      |
+#                            |        SCM server |
+#                       On your computer    Read Write Access
 
 # It is then easy to progress and import your own repositories following the scm layout of
-# data/hg    <- storage of mercurial repositories
-#      git   <- storage of git repositories
-#      svn   <- storage of subversion repositories
+# /root/.scm/repository/hg    <- storage of mercurial repositories
+#                       git   <- storage of git repositories
+#                       svn   <- storage of subversion repositories
+#            plugins          <- storage of plugins
 
 EXPOSE 8080
 CMD ["/usr/share/scm-manager/scm-server/bin/scm-server"]
-VOLUME ["/data"]
